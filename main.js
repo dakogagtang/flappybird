@@ -1,8 +1,8 @@
 //create our main state that will conatin game
 var mainState={
 preload: function() {
-	game.load.image('bird' 'assets/bird.png');	
-	game.load.image('pipe' 'assets/pipe.png');
+	game.load.image('bird', 'assets/bird.png');
+	game.load.image('pipe', 'assets/pipe.png');
 },
 create: function() {
 	game.stage.bacgkgroundColor = '#71c5cf';
@@ -16,7 +16,7 @@ create: function() {
 	this.score=0;
 	this.labelScore=game.add.text(20,20,"0", {font: "30px Arial", fill: "#ffffff"});
 
-	var spaceKey = game.input.keyboard.addKey(sPhaser.Keyboard.SPACEBAR);
+	var spaceKey = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 	spaceKey.onDown.add(this.jump, this);
 },
 update:function() {
@@ -33,7 +33,7 @@ restartGame: function() {
 },
 addOnePipe: function(x,y){
 	var pipe= game.add.sprite (x,y,'pipe')
-	this.pipe.add(pipe)
+	this.pipes.add(pipe)
 	game.physics.arcade.enable(pipe);
 
 	pipe.body.velocity.x=-200;
@@ -41,7 +41,7 @@ addOnePipe: function(x,y){
 	pipe.outBoundsKill=true;
 },
 addRowOfPipes: function() {
-	var hole = Math.floor(Math.random() * 5) + 1)
+	var hole = Math.floor(Math.random() * 5) + 1;
 
 	for(var i = 0; i<8; i++)
 		if(i!=hole && i!=hole+1)
